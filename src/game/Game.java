@@ -24,12 +24,14 @@ public class Game extends Observable implements Runnable{
                     this.cells[x][y] = false;
                 }
             }
+            this.setChanged();
             this.notifyObservers();
         }
     }
 
     public void randomize(){
         if(!running) {
+            this.clearCells();
             int minCells = 10;
             int maxCells = this.xLength * this.yLength - minCells;
             int nbCells = new Random().nextInt(maxCells);
@@ -44,6 +46,8 @@ public class Game extends Observable implements Runnable{
                     }
                 }
             }
+            this.setChanged();
+            this.notifyObservers();
         }
     }
 

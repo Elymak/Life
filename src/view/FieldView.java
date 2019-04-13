@@ -70,7 +70,6 @@ public class FieldView extends JPanel implements Observer, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Click");
         int xClick = e.getX();
         int yClick = e.getY();
 

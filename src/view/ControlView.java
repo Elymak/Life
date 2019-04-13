@@ -75,11 +75,9 @@ public class ControlView extends JPanel implements ActionListener {
 
     private void doClear(){
         this.mainView.getGame().clearCells();
-        this.mainView.repaint();
     }
 
     private void doRandomize(){
         this.mainView.getGame().randomize();
-        this.mainView.repaint();
     }
 }
