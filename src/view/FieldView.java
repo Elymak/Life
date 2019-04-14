@@ -7,10 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Observable;
-import java.util.Observer;
 
-public class FieldView extends JPanel implements Observer, MouseListener {
+public class FieldView extends JPanel implements MouseListener {
 
     private static final int OFFSET = Constantes.CELL_SIZE;
     private Game game;
@@ -62,10 +60,8 @@ public class FieldView extends JPanel implements Observer, MouseListener {
         }
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        this.game = (Game) o;
-        this.repaint();
+    public void setGame(Game game){
+        this.game = game;
     }
 
     @Override
@@ -79,7 +75,6 @@ public class FieldView extends JPanel implements Observer, MouseListener {
 
         if(isInBounds) {
             this.game.toogleCell(x, y);
-            this.repaint();
         }
     }
 

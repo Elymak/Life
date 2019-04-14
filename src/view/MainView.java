@@ -4,8 +4,10 @@ import game.Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
-public class MainView extends JFrame {
+public class MainView extends JFrame implements Observer {
 
     private Game game;
     private FieldView fieldView;
@@ -22,7 +24,7 @@ public class MainView extends JFrame {
 
         this.game = game;
         this.fieldView = new FieldView(this.game);
-        this.game.addObserver(this.fieldView);
+        this.game.addObserver(this);
         this.add(this.fieldView, BorderLayout.CENTER);
 
         this.controlView = new ControlView(this);
@@ -31,6 +33,13 @@ public class MainView extends JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.game = (Game) o;
+        this.fieldView.setGame(this.game);
+        this.repaint();
     }
 
     public Game getGame(){

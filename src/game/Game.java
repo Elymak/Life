@@ -161,6 +161,8 @@ public class Game extends Observable implements Runnable{
 
     public void toogleCell(int x, int y){
         this.cells[x][y] = !this.cells[x][y];
+        this.setChanged();
+        this.notifyObservers();
     }
 
     @Override
